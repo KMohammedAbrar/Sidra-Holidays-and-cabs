@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidra Holidays &amp; Cabs | Travel, Tours &amp; Cab Services</title>
+<meta name="description" content="Sidra Holidays &amp; Cabs offers reliable cab hire, holiday packages, corporate travel, family trips, honeymoons, international travel and bus and train ticket booking services.">
+<link rel="canonical" href="https://www.example.com/index.html">
+<meta name="theme-color" content="#0F4C5C">
+<meta name="author" content="Sidra Holidays &amp; Cabs">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sidra Holidays &amp; Cabs">
+<meta property="og:title" content="Sidra Holidays &amp; Cabs | Travel, Tours &amp; Cab Services">
+<meta property="og:description" content="Sidra Holidays &amp; Cabs offers reliable cab hire, holiday packages, corporate travel, family trips, honeymoons, international travel and bus and train ticket booking services.">
+<meta property="og:url" content="https://www.example.com/index.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=70">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sidra Holidays &amp; Cabs | Travel, Tours &amp; Cab Services">
+<meta name="twitter:description" content="Sidra Holidays &amp; Cabs offers reliable cab hire, holiday packages, corporate travel, family trips, honeymoons, international travel and bus and train ticket booking services.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=70">
+
+<link rel="icon" href="assets/images/logo.jpg" type="image/jpg">
+<link rel="apple-touch-icon" href="assets/images/logo.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    corePlugins: { preflight: false },
+    theme: {
+      extend: {
+        colors: {
+          brand:  { DEFAULT: '#0F4C5C', dark: '#0B3946' },
+          leaf:   '#2F7D6D',
+          gold:   '#E9B949',
+          sand:   '#F7F8F6',
+          ink:    '#1F2933',
+          muted:  '#667085'
+        },
+        fontFamily: {
+          head: ['Poppins', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Updated Feature/Service Icon Container Styling */
+  .feature-icon,
+  .media-card__figure {
+    position: relative;
+  }
+
+  .feature-card .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(15, 76, 92, 0.12) 0%, rgba(47, 125, 109, 0.16) 100%);
+    color: #0F4C5C;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 0 0 1px rgba(15, 76, 92, 0.08), 0 4px 10px rgba(15, 76, 92, 0.05);
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  }
+
+  .feature-card:hover .feature-icon {
+    background: linear-gradient(135deg, #0F4C5C 0%, #2F7D6D 100%);
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  .brand-mark {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #fff;
+  }
+  @media (max-width: 767.98px) {
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  .site-footer .brand-mark {
+    width: 56px;
+    height: 56px;
+  }
+  @media (max-width: 767.98px) {
+    .site-footer .brand-mark {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  /* ---- Package cards (clickable, summary only) ---- */
+  .package-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(15, 76, 92, .08);
+    border: 1px solid rgba(15, 76, 92, .08);
+    text-decoration: none;
+    color: inherit;
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+  .package-card:hover,
+  .package-card:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 34px rgba(15, 76, 92, .16);
+    outline: none;
+  }
+  .package-card:focus-visible {
+    box-shadow: 0 0 0 3px rgba(233, 185, 73, .55), 0 14px 34px rgba(15, 76, 92, .16);
+  }
+  .package-card__figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #0F4C5C;
+  }
+  .package-card__figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .45s ease;
+  }
+  .package-card:hover .package-card__figure img {
+    transform: scale(1.06);
+  }
+  .package-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #E9B949;
+    color: #0B3946;
+    font-family: 'Poppins', sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 999px;
+    line-height: 1;
+  }
+  .package-card__body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .package-card__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #1F2933;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+  .package-card__meta {
+    font-size: .88rem;
+    color: #667085;
+    margin: 0 0 10px;
+    line-height: 1.5;
+  }
+  .package-card__meta strong {
+    color: #0F4C5C;
+    font-weight: 600;
+  }
+  .package-card__dest {
+    font-size: .85rem;
+    color: #2F7D6D;
+    font-weight: 500;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  .package-card__foot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(15, 76, 92, .10);
+  }
+  .package-card__price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #0F4C5C;
+    line-height: 1.1;
+  }
+  .package-card__price small {
+    display: block;
+    font-size: .72rem;
+    font-weight: 500;
+    color: #667085;
+    letter-spacing: .02em;
+    margin-top: 2px;
+  }
+  .package-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    color: #2F7D6D;
+    white-space: nowrap;
+  }
+  .package-card:hover .package-card__cta {
+    color: #0F4C5C;
+  }
+
+  /* ---- Smaller header navigation links ---- */
+  .main-nav .nav-link {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.65rem;
+    letter-spacing: 0.01em;
+  }
+
+  @media (min-width: 992px) {
+    .main-nav {
+      gap: 0.15rem;
+    }
+  }
+
+  .header-cta {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .mobile-nav .m-link {
+    font-size: 0.92rem;
+    padding-block: 0.65rem;
+  }
+</style>
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="site-container">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Sidra Holidays and Cabs — home">
+        <img class="brand-mark" src="assets/images/logo.jpg" alt="Sidra Holidays &amp; Cabs logo" width="56" height="56">
+        <span class="brand-text">
+          <span class="brand-name">Sidra Holidays</span>
+          <span class="brand-tag">&amp; Cabs</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a class="nav-link is-active" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="packages.html">Packages</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a class="sh-btn sh-btn--primary sh-btn--sm header-cta" href="contact.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M15.5 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H8.5"/></svg> Book Your Trip</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation menu">
+          <span class="icon-open"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></span>
+          <span class="icon-close"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-backdrop" role="presentation"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile" aria-hidden="true">
+  <a class="m-link is-active" href="index.html" aria-current="page">Home</a>
+  <a class="m-link" href="about.html">About</a>
+  <a class="m-link" href="packages.html">Packages</a>
+  <a class="m-link" href="services.html">Services</a>
+  <a class="m-link" href="contact.html">Contact</a>
+  <a class="sh-btn sh-btn--primary sh-btn--block mt-4" href="contact.html">Book Your Trip</a>
+  <a class="sh-btn sh-btn--outline sh-btn--block mt-2" href="tel:+918904785650"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> Call +91 8904785650</a>
+</nav>
+
+<main id="main">
+<section class="hero">
+  <div class="hero__media">
+    <video autoplay muted loop playsinline  aria-label="Travel scenes from Sidra Holidays and Cabs">
+      <source src="assets/images/hero.mp4" type="video/mp4">
+      <img src="assets/images/abti.jpg" alt="Travel scenes from Sidra Holidays and Cabs" width="1920" height="1080" fetchpriority="high">
+    </video>
+  </div>
+  <div class="site-container">
+    <div class="hero__inner">
+      <span class="pill pill--light mb-4">Cabs · Holidays · Corporate Travel</span>
+      <h1>Travel Made Easy, Memories Made Forever</h1>
+
+      <div class="flex flex-wrap gap-3 mb-8">
+        <a class="sh-btn sh-btn--accent" href="packages.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg> Explore Packages</a>
+        <a class="sh-btn sh-btn--ghost-light" href="contact.html?service=Car%20Hire"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M5 12h14"/></svg> Book a Cab</a>
+      </div>
+      <div class="hero__badges"><span class="hero__badge"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg> Doorstep pick-up</span><span class="hero__badge"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg> Fixed, upfront pricing</span><span class="hero__badge"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg> 24/7 travel support</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="site-container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+      <div class="reveal">
+        <div style="position:relative;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-md);">
+          <img src="assets/images/abti.jpg" alt="Sidra Holidays and Cabs Ooty and Mysore travel package" loading="lazy" width="1360" height="907" style="aspect-ratio:4/3;object-fit:cover;width:100%;">
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-4">
+          <div class="stat-block card-base"><div class="stat-num">10+</div><div class="stat-label">Years of travel experience</div></div>
+          <div class="stat-block card-base"><div class="stat-num">9</div><div class="stat-label">Travel services offered</div></div>
+          <div class="stat-block card-base"><div class="stat-num">24/7</div><div class="stat-label">Booking &amp; trip support</div></div>
+        </div>
+      </div>
+      <div class="reveal" data-reveal-delay="80">
+        <div class="reveal">
+<span class="section-eyebrow">About Us</span>
+<h2 class="section-title">A travel partner you can actually reach</h2>
+<div class="rule"></div>
+</div>
+        <p class="section-lead mb-4">Sidra Holidays &amp; Cabs is your trusted travel partner for comfortable transportation, thoughtfully planned holidays and hassle-free travel services. Whether you are planning a family vacation, honeymoon, business trip, day excursion or international journey, our team helps you travel with confidence.</p>
+        <ul class="tick-list mb-6"><li>Professional service</li><li>Reliable transportation</li><li>Customized travel plans</li><li>Customer-first support</li></ul>
+        <a class="sh-btn sh-btn--primary" href="about.html">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="why-us">
+  <div class="site-container">
+    <div class="reveal">
+
+<h2 class="section-title">Why Travelers Choose Us</h2>
+<div class="rule"></div>
+<p class="section-lead">Six reasons customers come back to us for their cabs, weekend trips and holidays.</p>
+</div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+      <article class="card-base feature-card reveal" data-reveal-delay="0"><span class="feature-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 5-3.4 8.4-8 9.5C7.4 20.4 4 17 4 12V6l8-3z"/><polyline points="9 12 11 14 15 10"/></svg></span><h3>Trusted Travel Partner</h3><p>Reliable travel planning and transportation services, handled by people you can reach directly.</p></article>
+      <article class="card-base feature-card reveal" data-reveal-delay="60"><span class="feature-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M5 12h14"/></svg></span><h3>Comfortable Journeys</h3><p>Clean, well-maintained vehicles and itineraries planned around comfortable driving hours.</p></article>
+      <article class="card-base feature-card reveal" data-reveal-delay="120"><span class="feature-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></span><h3>Customized Packages</h3><p>Travel plans shaped around your dates, budget and group — individual, family or corporate.</p></article>
+      <article class="card-base feature-card reveal" data-reveal-delay="180"><span class="feature-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1"/><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H5"/><circle cx="16.5" cy="13" r="1.2"/></svg></span><h3>Transparent Pricing</h3><p>Clear and competitive pricing shared upfront, without unnecessary surprises at the end of the trip.</p></article>
+      <article class="card-base feature-card reveal" data-reveal-delay="240"><span class="feature-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M20 14h-2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1z"/><path d="M18 19v1a2 2 0 0 1-2 2h-3"/></svg></span><h3>24/7 Travel Support</h3><p>Assistance before you leave and throughout your journey, on call whenever you need it.</p></article>
+      <article class="card-base feature-card reveal" data-reveal-delay="300"><span class="feature-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/><circle cx="9.5" cy="7.5" r="3.5"/><path d="M21 20v-1.5a4 4 0 0 0-3-3.87"/><path d="M15.5 4.2a3.5 3.5 0 0 1 0 6.6"/></svg></span><h3>Experienced Team</h3><p>Professional travel assistance, destination knowledge and drivers who know the routes.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="site-container">
+    <div class="reveal">
+<span class="section-eyebrow">What We Do</span>
+<h2 class="section-title">Our Travel Services</h2>
+<div class="rule"></div>
+
+</div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+      <article class="card-base reveal" data-reveal-delay="0" id="car-hire">
+        <div class="media-card__figure">
+          <img src="assets/images/ch.jpg" alt="Driver at the wheel of a clean car on a sunlit road" loading="lazy" width="1200" height="750">
+        </div>
+        <div class="card-body">
+          <h3>Car Hire</h3>
+          <p>Reliable cars with experienced drivers for airport runs, local errands and long outstation drives.</p>
+          <div class="card-actions">
+            <a class="text-link" href="services.html#car-hire">Learn More <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="text-link" href="contact.html?service=car-hire" style="color:#2F7D6D;">Enquire Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card-base reveal" data-reveal-delay="70" id="corporate-travel">
+        <div class="media-card__figure">
+          <img src="assets/images/ct.jpg" alt="Business traveller walking through an airport terminal with luggage" loading="lazy" width="1200" height="750">
+        </div>
+        <div class="card-body">
+          <h3>Corporate Travel</h3>
+          <p>A dependable transport partner for your office — daily staff movement, client visits and event travel.</p>
+          <div class="card-actions">
+            <a class="text-link" href="services.html#corporate-travel">Learn More <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="text-link" href="contact.html?service=corporate-travel" style="color:#2F7D6D;">Enquire Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card-base reveal" data-reveal-delay="140" id="couples-travel">
+        <div class="media-card__figure">
+          <img src="assets/images/cp.jpg" alt="Couple sitting together on a rope bridge during a holiday" loading="lazy" width="1200" height="750">
+        </div>
+        <div class="card-body">
+          <h3>Couples Travel</h3>
+          <p>Romantic getaways for two, with destinations, stays and itineraries built around what you both enjoy.</p>
+          <div class="card-actions">
+            <a class="text-link" href="services.html#couples-travel">Learn More <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="text-link" href="contact.html?service=couples-travel" style="color:#2F7D6D;">Enquire Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card-base reveal" data-reveal-delay="0" id="day-trip">
+        <div class="media-card__figure">
+          <img src="assets/images/dt.jpg" alt="Quiet tree-lined road ideal for a one-day excursion" loading="lazy" width="1200" height="750">
+        </div>
+        <div class="card-body">
+          <h3>Day Trip</h3>
+          <p>Convenient one-day sightseeing and excursion packages — leave in the morning, home by night.</p>
+          <div class="card-actions">
+            <a class="text-link" href="services.html#day-trip">Learn More <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="text-link" href="contact.html?service=day-trip" style="color:#2F7D6D;">Enquire Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card-base reveal" data-reveal-delay="70" id="family-trips">
+        <div class="media-card__figure">
+          <img src="assets/images/ft.jpg" alt="Family holding hands on the shoreline at sunset" loading="lazy" width="1200" height="750">
+        </div>
+        <div class="card-body">
+          <h3>Family Trips</h3>
+          <p>Family-friendly vacations with spacious vehicles, easy schedules and stays suited to children and elders.</p>
+          <div class="card-actions">
+            <a class="text-link" href="services.html#family-trips">Learn More <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="text-link" href="contact.html?service=family-trips" style="color:#2F7D6D;">Enquire Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card-base reveal" data-reveal-delay="140" id="honeymoons">
+        <div class="media-card__figure">
+          <img src="assets/images/hm.jpg" alt="Couple sitting beside candles overlooking a city skyline at night" loading="lazy" width="1200" height="750">
+        </div>
+        <div class="card-body">
+          <h3>Honeymoons</h3>
+          <p>Complete honeymoon packages arranged end to end, so the trip runs without a single phone call from you.</p>
+          <div class="card-actions">
+            <a class="text-link" href="services.html#honeymoons">Learn More <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="text-link" href="contact.html?service=honeymoons" style="color:#2F7D6D;">Enquire Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="mt-10 text-center reveal"><a class="sh-btn sh-btn--outline" href="services.html">View all travel services <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PACKAGES — summary cards, each links to its detail page
+     ============================================================ -->
+<section class="section section--alt" id="packages">
+  <div class="site-container">
+    <div class="reveal">
+      <span class="section-eyebrow">Holidays</span>
+      <h2 class="section-title">Popular Travel Packages</h2>
+      <div class="rule"></div>
+      
+    </div>
+
+   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+
+<!-- Coorg Package-->
+
+<article class="package-card reveal" data-reveal-delay="70">
+  <div class="package-card__figure">
+    <img src="assets/images/packages/Coorg.jpg" alt="Coorg hills and waterfalls" loading="lazy" width="1200" height="750">
+    <span class="package-card__badge">Couple Getaway</span>
+  </div>
+  <div class="package-card__body">
+    <h3 class="package-card__title">Coorg Escape</h3>
+    <p class="package-card__meta"><strong>2 Nights / 3 Days</strong> · Bangalore → Coorg → Bangalore</p>
+    <p class="package-card__dest">Abbey Falls · Raja's Seat · Dubare Elephant Camp · Golden Temple · ₹24,999 per couple</p>
+    <div class="package-card__foot">
+      <div class="package-card__price">₹24,999 <small>Per couple</small></div>
+      <a class="package-card__cta" href="tel:+918904785650">Call Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    </div>
+  </div>
+</article>
+
+
+<!-- Mysore - Ooty - Kodaikanal Package -->
+
+      <article class="package-card reveal" data-reveal-delay="0">
+        <div class="package-card__figure">
+          <img src="assets/images/packages/Mysore-Ooty-kodaikanal.jpeg" alt="Mysore Ooty Kodaikanal hills and lake" loading="lazy" width="1200" height="750">
+          <span class="package-card__badge">Hill Station Getaway</span>
+        </div>
+        <div class="package-card__body">
+          <h3 class="package-card__title">Mysore - Ooty - Kodaikanal</h3>
+          <p class="package-card__meta"><strong>6 Nights / 7 Days</strong> · Bangalore → Bangalore</p>
+          <p class="package-card__dest">Mysore Palace · Ooty Lake · Botanical Garden · Doddabetta Peak · Tea Factory · Kodaikanal Lake · Coaker's Walk · Pillar Rocks</p>
+          <div class="package-card__foot">
+            <div class="package-card__price">Enquire <small>for best price</small></div>
+            <a class="package-card__cta" href="tel:+918904785650">Call Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ooty Couple Package -->
+      <article class="package-card reveal" data-reveal-delay="0">
+        <div class="package-card__figure">
+          <img src="assets/images/packages/ooty.jpeg" alt="Ooty lake and hills" loading="lazy" width="1200" height="750">
+          <span class="package-card__badge">Couple Special</span>
+        </div>
+        <div class="package-card__body">
+          <h3 class="package-card__title">Ooty Couple Package</h3>
+          <p class="package-card__meta"><strong>3 Nights / 4 Days</strong> · Bangalore → Bangalore</p>
+          <p class="package-card__dest">Ooty Lake · Botanical Garden · Doddabetta Peak · Tea Factory · Pykara Falls</p>
+          <div class="package-card__foot">
+            <div class="package-card__price">₹29,999 <small>per couple</small></div>
+            <a class="package-card__cta" href="tel:+918904785650">Call Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kashmir Tour Package -->
+      <article class="package-card reveal" data-reveal-delay="70">
+        <div class="package-card__figure">
+          <img src="assets/images/packages/kashmir.jpeg" alt="Kashmir mountains and Dal Lake" loading="lazy" width="1200" height="750">
+          <span class="package-card__badge">Best Deal for Couples</span>
+        </div>
+        <div class="package-card__body">
+          <h3 class="package-card__title">Kashmir Tour Package</h3>
+          <p class="package-card__meta"><strong>4 Nights / 5 Days</strong> · Srinagar · Sonamarg · Pahalgam · Gulmarg</p>
+          <p class="package-card__dest">Dal Lake Shikara Ride · Mughal Gardens · Thajiwas Glacier · Gulmarg Gondola</p>
+          <div class="package-card__foot">
+            <div class="package-card__price">₹26,999 <small>per couple</small></div>
+            <a class="package-card__cta" href="tel:+918904785650">Call Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      
+
+      <!-- Wayanad Tour Package -->
+      <article class="package-card reveal" data-reveal-delay="0">
+        <div class="package-card__figure">
+          <img src="assets/images/packages/wayanad.jpeg" alt="Wayanad hills and waterfalls" loading="lazy" width="1200" height="750" onerror="this.onerror=null;this.src='assets/images/packages/waynad.jpg';">
+          <span class="package-card__badge">Nature · Adventure</span>
+        </div>
+        <div class="package-card__body">
+          <h3 class="package-card__title">Wayanad Tour Package</h3>
+          <p class="package-card__meta"><strong>Custom duration</strong> · Bangalore / Ballari departure</p>
+          <p class="package-card__dest">Soochipara Falls · Banasura Sagar Dam · Chembra Peak · Edakkal Caves · Pookode Lake</p>
+          <div class="package-card__foot">
+            <div class="package-card__price">Enquire <small>for best price</small></div>
+            <a class="package-card__cta" href="tel:+918904785650">Call Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Gokarna Package -->
+      <article class="package-card reveal" data-reveal-delay="70">
+        <div class="package-card__figure">
+          <img src="assets/images/packages/gokarna.jpeg" alt="Gokarna beach and coastline" loading="lazy" width="1200" height="750">
+          <span class="package-card__badge">Beach Getaway</span>
+        </div>
+        <div class="package-card__body">
+          <h3 class="package-card__title">Gokarna Package</h3>
+          <p class="package-card__meta"><strong>2 Nights / 3 Days</strong> · Bangalore → Gokarna → Bangalore</p>
+          <p class="package-card__dest">Om Beach · Kudle Beach · Mahabaleshwar Temple · Murudeshwar Shiva Statue</p>
+          <div class="package-card__foot">
+            <div class="package-card__price">₹29,999 <small>per couple</small></div>
+            <a class="package-card__cta" href="tel:+918904785650">Call Now <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mt-10 text-center reveal">
+      <a class="sh-btn sh-btn--outline" href="packages.html">View all packages <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials">
+  <div class="site-container">
+    <div class="reveal">
+<span class="section-eyebrow">Reviews</span>
+<h2 class="section-title">What Our Travelers Say</h2>
+<div class="rule"></div>
+<p class="section-lead">A few of the trips we have planned, in our customers' words.</p>
+</div>
+   <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
+      <article class="card-base testimonial-card reveal" data-reveal-delay="0"><div class="mb-3"><span class="stars"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span></span><span class="visually-hidden">Rated 5 out of 5</span></div><blockquote>We had a fantastic experience booking our family trip to Mysore with Sidra Holidays & Cabs. From comfortable accommodation and smooth transportation to well-planned sightseeing, everything was arranged perfectly. <div>The service was professional, reliable, and reasonably priced.</blockquote><div class="reviewer"><img src="assets/images/testimonials/K Abrar.svg" alt="" width="44" height="44" loading="lazy"><div><div class="r-name">K Abrar</div></div></div></article>
+      <article class="card-base testimonial-card reveal" data-reveal-delay="70"><div class="mb-3"><span class="stars"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span></span><span class="visually-hidden">Rated 5 out of 5</span></div><blockquote>Have a good holidays plans..
+Excellent service from Sidra Holidays & Cabs! Our trip was very well planned, the hotel was good, and the cab service was comfortable and on time. The team was very helpful throughout the journey. Highly recommended for tour packages and travel bookings.”</blockquote><div class="reviewer"><img src="assets/images/testimonials/Mueez k.svg" alt="" width="44" height="44" loading="lazy"><div><div class="r-name">Mueez k</div><div class="r-meta"></div></div></article>
+      <article class="card-base testimonial-card reveal" data-reveal-delay="140"><div class="mb-3"><span class="stars"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span></span><span class="visually-hidden">Rated 5 out of 5</span></div><blockquote>We had wonderful 7-8day trip and mudassir made the entire journey even more enjoyable he was extremely supportive professional and ensured we were comfortable throughout the trip
+The driving was smooth, safe, and comfortable making every journey relaxing, A special mention goes to the thoughtful gesture of welcoming us with complimentary the trip thank you sidra holidays and cabs
+Excellent service from Sidra Holidays & Cabs! Our trip was very well planned, the hotel was good, and the cab service was comfortable and on time. The team was very helpful throughout the journey. Highly recommended for tour packages and travel bookings.”.</blockquote><div class="reviewer"><img src="assets/images/testimonials/Sathvick dempu.svg" alt="" width="44" height="44" loading="lazy"><div><div class="r-name">Sathvick dempu</div></div></div></article>
+      <article class="card-base testimonial-card reveal" data-reveal-delay="0"><div class="mb-3"><span class="stars"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span></span><span class="visually-hidden">Rated 4 out of 5</span></div><blockquote>“Had a wonderful family holiday with Sidra Holidays & Cabs. From booking to the end of the trip, everything was managed professionally. We enjoyed the trip without worrying about arrangements.”
+</blockquote><div class="reviewer"><img src="assets/images/testimonials/Afsar Md.svg" alt="" width="44" height="44" loading="lazy"><div><div class="r-name">Afsar Md </div></div></div></article>
+      <article class="card-base testimonial-card reveal" data-reveal-delay="70"><div class="mb-3"><span class="stars"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span></span><span class="visually-hidden">Rated 5 out of 5</span></div><blockquote>Excellent service! The cab was clean, comfortable, and arrived right on time. The driver was professional, courteous, and drove safely throughout the trip. Highly recommended for hassle-free travel and great holiday planning!.</blockquote><div class="reviewer"><img src="assets/images/testimonials/S Tasneem Banu.svg" alt="" width="44" height="44" loading="lazy"><div><div class="r-name">S Tasneem Banu</div></div></div></article>
+      <article class="card-base testimonial-card reveal" data-reveal-delay="140"><div class="mb-3"><span class="stars"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span><span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.2 5.7 21.5 7 14.5 2 9.8 9 9"/></svg></span></span><span class="visually-hidden">Rated 5 out of 5</span></div><blockquote>Nice travel agency...thank u for wonderful holiday trip and service
+</blockquote><div class="reviewer"><img src="assets/images/testimonials/Venkatesh pragada.svg" alt="" width="44" height="44" loading="lazy"><div><div class="r-name">Venkatesh Pragada</div></div></div></article>
+    </div>
+    
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-container">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4" style="padding-block:clamp(40px,5vw,64px);">
+
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img class="brand-mark" src="assets/images/logo.jpg" alt="Holidays &amp; Cabs logo" width="64" height="64">
+          <span class="footer-brand-name">Holidays &amp; Cabs</span>
+        </div>
+        <p style="font-size:.93rem;">Your trusted travel partner for comfortable transportation, thoughtfully planned holidays and hassle-free travel services.</p>
+        <div class="flex gap-2 mt-5"><a class="social-link" href="https://www.instagram.com/sidra.holidays?stkn=MTJrb2NmZDY3ODBseQ==" aria-label="https://www.instagram.com/sidra.holidays?stkn=MTJrb2NmZDY3ODBseQ==" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.8-.1zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.1a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z"/></svg></a><a class="social-link" href="https://wa.me/+918904785650" aria-label="https://wa.me/+918904785650" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.6.6 0 0 0 0-.6c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9 5.1 5.1 0 0 0 3.1.6 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.2-.2-.2-.4-.3z"/></svg></a></div>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <ul class="clean f-list"><li><a href="about.html">About Us</a></li><li><a href="packages.html">Packages</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </div>
+
+      <div>
+        <h3>Services</h3>
+        <ul class="clean f-list"><li><a href="services.html#car-hire">Car Hire</a></li><li><a href="services.html#corporate-travel">Corporate Travel</a></li><li><a href="services.html#couples-travel">Couples Travel</a></li><li><a href="services.html#day-trip">Day Trip</a></li><li><a href="services.html#family-trips">Family Trips</a></li><li><a href="services.html#honeymoons">Honeymoons</a></li><li><a href="services.html#international-services">International Services</a></li><li><a href="services.html#bus-ticket-booking">Bus Ticket Booking</a></li><li><a href="services.html#train-ticket-booking">Train Ticket Booking</a></li></ul>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <ul class="clean f-list">
+          <li class="flex gap-2"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> <a href="tel:+918904785650">+91 8904785650</a></li>
+          <li class="flex gap-2"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3.5 7 12 13 20.5 7"/></svg> <a href="mailto:sidraholidaysandcabs@gmail.com">sidraholidaysandcabs@gmail.com</a></li>
+           
+          <li class="flex gap-2"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> <span style="font-size:.93rem;">Fraser Town, Bengaluru, Karnataka 560046</span></li>
+          <li class="flex gap-2"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> <span style="font-size:.93rem;">Mon–Sat, 9:00 AM – 11:00 PM</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom flex flex-wrap items-center justify-between gap-3">
+      <p class="mb-0">&copy; <span data-current-year>2026</span> Sidra Holidays &amp; Cabs. All Rights Reserved.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="12" y1="20" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg></button>
+
+<div class="quick-actions">
+  <a href="tel:+918904785650"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6A19.6 19.6 0 0 1 1.3 3.6 2 2 0 0 1 3.3 1.4h2.2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 9.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> Call Now</a>
+  <a href="https://wa.me/+918904785650" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.6.6 0 0 0 0-.6c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9 5.1 5.1 0 0 0 3.1.6 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.2-.2-.2-.4-.3z"/></svg> WhatsApp</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/script.js" defer></script>
+</body>
+</html>
