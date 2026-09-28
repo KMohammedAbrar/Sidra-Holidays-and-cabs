@@ -588,6 +588,249 @@
   }
 
   /* ======================================================================
+     11. GLOBAL VISITOR COUNTER  (shared by every visitor, worldwide)
+     ----------------------------------------------------------------------
+     Uses CounterAPI — free, no signup, no API key, no backend needed.
+     Every visitor on every device hits the same URL and sees the same number.
+
+     HTML elements this script looks for:
+       <strong data-visitor-count>0</strong>  -> today's visitor count (shared)
+       <span data-visitor-total>0</span>      -> all-time total (shared)
+       <time data-visitor-date></time>        -> today's date
+
+     • Today's count  -> key changes every day, so it auto-resets at midnight
+     • Total count    -> fixed key, never resets
+     • If the network fails, it falls back to a local count so the widget
+       never shows blank or zero.
+     ====================================================================== */
+  var VISITOR_COUNTER = {
+    /* Unique namespace for Sidra Holidays & Cabs.
+       This is what separates our counter from every other site using
+       the same free service. Do not change it unless you want a fresh
+       count from zero. */
+    namespace: 'sidra-holidays-cabs-bengaluru-v1',
+
+    todayPrefix: 'day-',        // becomes  day-2026-09-24
+    totalKey:    'all-time',    // never resets
+
+    apiBase: 'https://api.counterapi.dev/v1',
+
+    /* Local fallback (only used if the API is unreachable) */
+    fallbackKey:  'sidraVisitorFallback',
+    sessionKey:   'sidraVisitorSession',
+    countOncePerSession: true,
+
+    selectors: {
+      today: '[data-visitor-count]',
+      total: '[data-visitor-total]',
+      date:  '[data-visitor-date]'
+    },
+    dateLocale: undefined,
+    dateOptions: { day: 'numeric', month: 'short', year: 'numeric' }
+  };
+
+  function getLocalDateKey(date) {
+    var d = date || new Date();
+    var year = d.getFullYear();
+    var month = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return year + '-' + month + '-' + day;
+  }
+
+  function safeStorage(type) {
+    try {
+      var storage = window[type];
+      var testKey = '__sidra_test__';
+      storage.setItem(testKey, '1');
+      storage.removeItem(testKey);
+      return storage;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  var visitorLocalStorage = safeStorage('localStorage');
+  var visitorSessionStorage = safeStorage('sessionStorage');
+
+  function readVisitorFallback() {
+    var todayKey = getLocalDateKey();
+    var data = { date: todayKey, today: 0, total: 0 };
+
+    if (visitorLocalStorage) {
+      var raw = null;
+      try { raw = visitorLocalStorage.getItem(VISITOR_COUNTER.fallbackKey); } catch (e) { raw = null; }
+      if (raw) {
+        try { data = JSON.parse(raw) || data; } catch (e) { /* keep default */ }
+      }
+    }
+
+    if (typeof data.today !== 'number' || data.today < 0) data.today = 0;
+    if (typeof data.total !== 'number' || data.total < 0) data.total = 0;
+    if (data.date !== todayKey) {
+      data.date = todayKey;
+      data.today = 0;
+    }
+    return data;
+  }
+
+  function writeVisitorFallback(data) {
+    if (!visitorLocalStorage) return;
+    try {
+      visitorLocalStorage.setItem(VISITOR_COUNTER.fallbackKey, JSON.stringify(data));
+    } catch (e) {
+      /* Storage may be full or blocked. */
+    }
+  }
+
+  function shouldCountVisit(todayKey) {
+    if (!VISITOR_COUNTER.countOncePerSession) return true;
+    if (!visitorSessionStorage) return true;
+
+    var key = VISITOR_COUNTER.sessionKey + ':' + todayKey;
+    try {
+      if (visitorSessionStorage.getItem(key)) return false;
+      visitorSessionStorage.setItem(key, '1');
+      return true;
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function formatVisitorDate(dateKey) {
+    var parts = dateKey.split('-');
+    var date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    try {
+      return date.toLocaleDateString(VISITOR_COUNTER.dateLocale, VISITOR_COUNTER.dateOptions);
+    } catch (e) {
+      return dateKey;
+    }
+  }
+
+  function renderVisitorCounter(today, total, dateKey) {
+    $$(VISITOR_COUNTER.selectors.today).forEach(function (el) {
+      el.textContent = Number(today || 0).toLocaleString();
+    });
+
+    $$(VISITOR_COUNTER.selectors.total).forEach(function (el) {
+      el.textContent = Number(total || 0).toLocaleString();
+    });
+
+    $$(VISITOR_COUNTER.selectors.date).forEach(function (el) {
+      el.textContent = formatVisitorDate(dateKey);
+      el.setAttribute('datetime', dateKey);
+    });
+  }
+
+  function counterApiRequest(key, action) {
+    var url = VISITOR_COUNTER.apiBase + '/' +
+      encodeURIComponent(VISITOR_COUNTER.namespace) + '/' +
+      encodeURIComponent(key) + '/' + action;
+
+    return fetch(url, { cache: 'no-store' })
+      .then(function (response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then(function (json) {
+        var n = json && (json.count != null ? json.count
+                 : json.value != null ? json.value
+                 : json.up_count != null ? json.up_count : null);
+        if (n == null) throw new Error('No count in response');
+        return Number(n) || 0;
+      });
+  }
+
+  function initVisitorCounter() {
+    var targets = $$(
+      VISITOR_COUNTER.selectors.today + ',' +
+      VISITOR_COUNTER.selectors.total + ',' +
+      VISITOR_COUNTER.selectors.date
+    );
+
+    if (!targets.length) return;
+
+    var todayKey = getLocalDateKey();
+    var todayApiKey = VISITOR_COUNTER.todayPrefix + todayKey;
+    var shouldIncrementToday = shouldCountVisit(todayKey);
+
+    /* ---- 1. Paint the local fallback instantly (never blank) ---- */
+    var local = readVisitorFallback();
+    if (shouldIncrementToday) {
+      local.today += 1;
+      local.total += 1;
+      writeVisitorFallback(local);
+    }
+    renderVisitorCounter(local.today, local.total, todayKey);
+
+    /* ---- 2. Fetch the real shared numbers from CounterAPI ---- */
+    if (shouldIncrementToday) {
+      Promise.all([
+        counterApiRequest(todayApiKey, 'up'),                     // increment today's shared count
+        counterApiRequest(VISITOR_COUNTER.totalKey, 'up')         // increment shared total
+      ])
+        .then(function (results) {
+          var sharedToday = results[0];
+          var sharedTotal = results[1];
+
+          writeVisitorFallback({ date: todayKey, today: sharedToday, total: sharedTotal });
+          renderVisitorCounter(sharedToday, sharedTotal, todayKey);
+        })
+        .catch(function (err) {
+          if (window.console && console.warn) {
+            console.warn('[visitor-counter] using local fallback:', err.message || err);
+          }
+          /* Local values are already on screen — nothing more to do */
+        });
+    }
+
+    /* ---- 3. If the tab stays open past midnight, refresh ---- */
+    (function scheduleVisitorReset() {
+      var now = new Date();
+      var nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 1, 0);
+      var delay = nextMidnight.getTime() - now.getTime();
+
+      window.setTimeout(function () {
+        var newDay = getLocalDateKey();
+
+        var fresh = readVisitorFallback();
+        fresh.date = newDay;
+        fresh.today = 0;
+        var shouldIncrementNewDay = shouldCountVisit(newDay);
+        if (shouldIncrementNewDay) {
+          fresh.today += 1;
+          fresh.total += 1;
+        }
+        writeVisitorFallback(fresh);
+        renderVisitorCounter(fresh.today, fresh.total, newDay);
+
+        if (shouldIncrementNewDay) {
+          Promise.all([
+            counterApiRequest(VISITOR_COUNTER.todayPrefix + newDay, 'up'),
+            counterApiRequest(VISITOR_COUNTER.totalKey, 'up')
+          ])
+            .then(function (results) {
+              writeVisitorFallback({ date: newDay, today: results[0], total: results[1] });
+              renderVisitorCounter(results[0], results[1], newDay);
+            })
+            .catch(function () { /* keep local values */ });
+        }
+
+        scheduleVisitorReset();
+      }, delay);
+    })();
+
+    /* ---- Public helper for debugging ---- */
+    window.SIDRA_VISITOR_COUNTER = {
+      get data() { return readVisitorFallback(); },
+      resetLocal: function () {
+        var current = { date: getLocalDateKey(), today: 0, total: 0 };
+        writeVisitorFallback(current);
+        renderVisitorCounter(current.today, current.total, current.date);
+      }
+    };
+  }
+
+  /* ======================================================================
      BOOT
      ====================================================================== */
   function boot() {
@@ -604,6 +847,7 @@
     initForm('enquiryForm');
     initForm('heroSearchForm');
     initYear();
+    initVisitorCounter();
   }
 
   if (document.readyState === 'loading') {
