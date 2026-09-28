@@ -618,7 +618,7 @@
     /* Local fallback (only used if the API is unreachable) */
     fallbackKey:  'sidraVisitorFallback',
     sessionKey:   'sidraVisitorSession',
-    countOncePerSession: true,
+    countOncePerSession: false,
 
     selectors: {
       today: '[data-visitor-count]',
