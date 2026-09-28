@@ -618,7 +618,7 @@
     /* Local fallback (only used if the API is unreachable) */
     fallbackKey:  'sidraVisitorFallback',
     sessionKey:   'sidraVisitorSession',
-    countOncePerSession: false,
+    countOncePerSession: true,
 
     selectors: {
       today: '[data-visitor-count]',
@@ -684,9 +684,20 @@
 
   function shouldCountVisit(todayKey) {
     if (!VISITOR_COUNTER.countOncePerSession) return true;
-    if (!visitorSessionStorage) return true;
 
     var key = VISITOR_COUNTER.sessionKey + ':' + todayKey;
+
+    if (visitorLocalStorage) {
+      try {
+        if (visitorLocalStorage.getItem(key)) return false;
+        visitorLocalStorage.setItem(key, '1');
+        return true;
+      } catch (e) {
+        // fall through to the default behavior below
+      }
+    }
+
+    if (!visitorSessionStorage) return true;
     try {
       if (visitorSessionStorage.getItem(key)) return false;
       visitorSessionStorage.setItem(key, '1');
